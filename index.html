@@ -65,24 +65,98 @@
       margin-bottom: 44px;
     }
 
-    .cta {
-      display: inline-block;
-      background: var(--orange);
-      color: #fff;
-      text-decoration: none;
-      border-radius: 14px;
-      padding: 16px 36px;
-      font-size: 17px;
-      font-weight: 600;
-      transition: opacity 0.2s, transform 0.15s;
-      margin-bottom: 12px;
+    /* ── SIGNUP FORM ── */
+    .signup-wrap {
+      width: 100%;
+      max-width: 440px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
     }
 
-    .cta:hover { opacity: 0.88; transform: translateY(-1px); }
+    .signup-form {
+      display: flex;
+      width: 100%;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.09);
+      margin-bottom: 10px;
+    }
 
-    .cta-note {
+    .signup-form input[type="email"] {
+      flex: 1;
+      padding: 15px 18px;
+      font-size: 16px;
+      border: 1.5px solid var(--border);
+      border-right: none;
+      border-radius: 14px 0 0 14px;
+      background: #fff;
+      color: var(--black);
+      outline: none;
+      font-family: inherit;
+      min-width: 0;
+    }
+
+    .signup-form input[type="email"]::placeholder { color: #bbb; }
+    .signup-form input[type="email"]:focus { border-color: var(--orange); }
+
+    .signup-form button {
+      padding: 15px 22px;
+      background: var(--orange);
+      color: #fff;
+      border: none;
+      border-radius: 0 14px 14px 0;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      transition: opacity 0.2s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .signup-form button:hover { opacity: 0.88; }
+
+    .signup-note {
       font-size: 13px;
       color: var(--muted);
+    }
+
+    .signup-success {
+      display: none;
+      background: #E8F5EE;
+      color: #2A6049;
+      border-radius: 12px;
+      padding: 14px 24px;
+      font-size: 15px;
+      font-weight: 500;
+      width: 100%;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    /* Dark form variant */
+    .signup-form-dark input[type="email"] {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.18);
+      color: #fff;
+    }
+
+    .signup-form-dark input[type="email"]::placeholder { color: rgba(255,255,255,0.35); }
+    .signup-form-dark input[type="email"]:focus { border-color: var(--orange); }
+
+    .signup-success-dark {
+      display: none;
+      background: rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.9);
+      border-radius: 12px;
+      padding: 14px 24px;
+      font-size: 15px;
+      font-weight: 500;
+      width: 100%;
+      text-align: center;
+      margin-bottom: 10px;
     }
 
     /* ── SECTIONS ── */
@@ -145,17 +219,8 @@
       margin-top: 2px;
     }
 
-    .step-title {
-      font-size: 16px;
-      font-weight: 700;
-      margin-bottom: 5px;
-    }
-
-    .step-desc {
-      font-size: 14px;
-      color: var(--muted);
-      line-height: 1.65;
-    }
+    .step-title { font-size: 16px; font-weight: 700; margin-bottom: 5px; }
+    .step-desc { font-size: 14px; color: var(--muted); line-height: 1.65; }
 
     /* ── CATEGORIES ── */
     .cats-section {
@@ -214,6 +279,9 @@
       color: #fff;
       text-align: center;
       padding: 80px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .bottom-tagline {
@@ -224,24 +292,10 @@
       margin-bottom: 36px;
     }
 
-    .cta-orange {
-      display: inline-block;
-      background: var(--orange);
-      color: #fff;
-      text-decoration: none;
-      border-radius: 14px;
-      padding: 16px 36px;
-      font-size: 17px;
-      font-weight: 600;
-      transition: opacity 0.2s, transform 0.15s;
-    }
-
-    .cta-orange:hover { opacity: 0.88; transform: translateY(-1px); }
-
     .bottom-note {
       font-size: 13px;
-      color: rgba(255,255,255,0.3);
-      margin-top: 14px;
+      color: rgba(255,255,255,0.28);
+      margin-top: 4px;
     }
 
     /* ── FOOTER ── */
@@ -255,38 +309,38 @@
       gap: 5px;
     }
 
-    footer a {
-      color: rgba(255,255,255,0.4);
-      text-decoration: none;
-      font-size: 13px;
-    }
-
+    footer a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 13px; }
     footer a:hover { color: #fff; }
 
-    .footer-legal {
-      font-size: 12px;
-      color: rgba(255,255,255,0.18);
-    }
+    .footer-legal { font-size: 12px; color: rgba(255,255,255,0.18); }
 
     @media (max-width: 480px) {
       .step { padding: 18px; gap: 14px; }
       .section { padding: 52px 20px; }
       .cats-section { padding: 52px 20px; }
       .bottom-cta { padding: 60px 20px; }
+      .signup-form button { padding: 15px 16px; font-size: 14px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- HERO — light background, use black logo -->
+  <!-- HERO -->
   <section class="hero">
     <img class="logo-black" src="ours-logo-black.png" alt="Ours NYC" />
     <p class="tagline">living in abundance together</p>
     <p class="description">
       A neighborhood sharing app that connects you with neighbors who have what you need — and lets you share what you have. No listings. No browsing. Just your community, showing up for each other.
     </p>
-    <a class="cta" href="mailto:hello@ours.nyc">Get early access</a>
-    <p class="cta-note">Launching in NYC · Be the first to know.</p>
+
+    <div class="signup-wrap">
+      <div class="signup-success" id="success-hero">🎉 You're on the list! We'll be in touch soon.</div>
+      <form class="signup-form" id="form-hero">
+        <input type="email" name="email" placeholder="Your email address" required />
+        <button type="submit">Get early access</button>
+      </form>
+      <p class="signup-note">Launching in NYC · No spam, ever.</p>
+    </div>
   </section>
 
   <!-- HOW IT WORKS -->
@@ -327,7 +381,7 @@
     </div>
   </div>
 
-  <!-- CATEGORIES — orange-tinted background, black logo still fine -->
+  <!-- CATEGORIES -->
   <div class="cats-section">
     <div class="cats-inner">
       <div class="section-label">What gets shared</div>
@@ -374,12 +428,18 @@
     </div>
   </div>
 
-  <!-- BOTTOM CTA — dark background, use white logo -->
+  <!-- BOTTOM CTA -->
   <div class="bottom-cta">
     <img class="logo-white" src="ours-logo-white.png" alt="Ours NYC" />
     <p class="bottom-tagline">living in abundance together</p>
-    <a class="cta-orange" href="mailto:hello@ours.nyc">Get early access →</a>
-    <p class="bottom-note">Coming soon to NYC · hello@ours.nyc</p>
+    <div class="signup-wrap">
+      <div class="signup-success-dark" id="success-bottom">🎉 You're on the list! We'll be in touch soon.</div>
+      <form class="signup-form signup-form-dark" id="form-bottom">
+        <input type="email" name="email" placeholder="Your email address" required />
+        <button type="submit">Get early access</button>
+      </form>
+      <p class="bottom-note">Coming soon to NYC · No spam, ever.</p>
+    </div>
   </div>
 
   <!-- FOOTER -->
@@ -387,6 +447,39 @@
     <a href="mailto:hello@ours.nyc">hello@ours.nyc</a>
     <p class="footer-legal">© 2026 Snackalot LLC · ours.nyc · All rights reserved</p>
   </footer>
+
+  <script>
+    const FORMSPREE = 'https://formspree.io/f/xykngyld';
+
+    async function handleSubmit(formEl, successEl) {
+      const email = formEl.querySelector('input[type="email"]').value;
+      try {
+        const res = await fetch(FORMSPREE, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ email })
+        });
+        if (res.ok) {
+          formEl.style.display = 'none';
+          successEl.style.display = 'block';
+        } else {
+          alert('Something went wrong — please try again or email us at hello@ours.nyc');
+        }
+      } catch {
+        alert('Something went wrong — please try again or email us at hello@ours.nyc');
+      }
+    }
+
+    document.getElementById('form-hero').addEventListener('submit', function(e) {
+      e.preventDefault();
+      handleSubmit(this, document.getElementById('success-hero'));
+    });
+
+    document.getElementById('form-bottom').addEventListener('submit', function(e) {
+      e.preventDefault();
+      handleSubmit(this, document.getElementById('success-bottom'));
+    });
+  </script>
 
 </body>
 </html>
